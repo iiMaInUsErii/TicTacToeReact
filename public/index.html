@@ -41,8 +41,19 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script>
-      colors = [ "#f2c947", "#abd7eb", "#2c9a8e", "#01463f", "#47485d" ];
-      document.body.style.background = colors[Math.floor(Math.random() * colors.length)]
+      window.onload = () => {
+        let colors = [ "#c66823", "#974f58", "#2c9a8e", "#01463f",
+          "#47485d", "#52353e", "#c4193d", "#560307",
+          "#321909", "#d99581", "#569353", "#4a6852",
+          "#85111e", "#751b11", "#460523", "#70301b",
+          "#442013", "#301a1b"
+        ];
+
+        let randomColor = colors[Math.floor(Math.random() * colors.length)]
+        
+        document.body.style.background = randomColor
+        document.getElementsByTagName('button')[0].style.color = randomColor
+      }
     </script>
   </body>
 </html>
