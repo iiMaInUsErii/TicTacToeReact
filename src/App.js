@@ -3,6 +3,9 @@ import "./App.css";
 import { useState, useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    document.title = "TicTacToe";
+  }, []);
   const [field, setField] = useState([
     [{}, {}, {}],
     [{}, {}, {}],
