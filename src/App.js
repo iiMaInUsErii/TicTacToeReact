@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 function App() {
   useEffect(() => {
     document.title = "TicTacToe";
+    let e=["#c66823","#974f58","#2c9a8e","#01463f","#47485d","#52353e","#c4193d","#560307","#321909","#d99581","#569353","#4a6852","#85111e","#751b11","#460523","#70301b","#442013","#301a1b"]
+    o=e[Math.floor(Math.random()*e.length)];
+    document.body.style.background=o,document.getElementsByTagName("button")[0].style.color=o
   }, []);
   const [field, setField] = useState([
     [{}, {}, {}],
