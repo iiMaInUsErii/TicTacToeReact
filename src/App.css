@@ -1,40 +1,175 @@
-.App {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+
+:root {
+  --cell-size: min(20vw, 100px);
+  --border-size: min(2vw, 10px);
+  --font-size: min(12vw, 65px);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  margin: 0;
   min-height: 100vh;
+  font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.5s ease;
+}
+
+.game-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main {
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
+.status {
+  margin-bottom: 2rem;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size);
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Вертикальные границы */
+.cell + .cell {
+  border-left: var(--border-size) solid white;
+}
+
+/* Горизонтальные границы */
+.row + .row .cell {
+  border-top: var(--border-size) solid white;
+}
+
+/* Убираем лишние границы */
+.row:first-child .cell {
+  border-top: none;
+}
+
+.cell:first-child {
+  border-left: none;
+}
+
+.reset {
+  width: clamp(150px, 50vw, 200px);
+  height: 50px;
+  margin-top: 30px;
+  border: none;
+  border-radius: 25px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background: rgba(255,255,255,0.9);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.reset:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  width: 85%;
+  max-width: 350px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  animation: modalAppear 0.4s ease-out;
+}
+
+@keyframes modalAppear {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal h2 {
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  color: inherit;
+}
+
+.modal button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.8rem;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 400px) {
+  :root {
+    --cell-size: 22vw;
+    --font-size: 14vw;
+  }
+  
+  .status {
+    margin-bottom: 1rem;
+  }
+  
+  .modal {
+    padding: 1.5rem;
   }
 }

@@ -29,7 +29,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root" style="text-align: center; margin: 0;position: absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%)"></div>
+    <div id="root" style=""></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -40,20 +40,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script>
-      window.onload = () => {
-        let colors = [ "#c66823", "#974f58", "#2c9a8e", "#01463f",
-          "#47485d", "#52353e", "#c4193d", "#560307",
-          "#321909", "#d99581", "#569353", "#4a6852",
-          "#85111e", "#751b11", "#460523", "#70301b",
-          "#442013", "#301a1b"
-        ];
-
-        let randomColor = colors[Math.floor(Math.random() * colors.length)]
-        
-        document.body.style.background = randomColor
-        document.getElementsByTagName('button')[0].style.color = randomColor
-      }
-    </script>
   </body>
 </html>
